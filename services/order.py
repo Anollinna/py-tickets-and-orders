@@ -37,7 +37,7 @@ def create_order(
     return order
 
 
-def get_orders(username: Optional[str] = None) -> QuerySet:
+def get_orders(username: Optional[str] = None) -> QuerySet[Order]:
     orders = Order.objects.select_related("user")
     if username:
         orders = orders.filter(user__username=username)
